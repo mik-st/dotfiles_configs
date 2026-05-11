@@ -1,0 +1,11 @@
+#!bin/bash
+
+#Description: link dotfile configuration files to home directory
+
+mkdir -p ~/.config
+ln -sf ~/dotfiles_configs/bashrc ~/.bashrc
+ln -sf ~/dotfiles_configs/vimrc ~/.vimrc
+ln -sf ~/dotfiles_congigs/starship.toml ~/.config/starship.toml
+
+
+echo 'Config files linked'
