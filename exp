@@ -1,0 +1,48 @@
+#!/bin/bash
+
+
+mapfile -t files < <(find . -type f | grep -v 'git')
+ignored=(./loops ./setup ./exp ./.exp.swp)
+final=()
+for file  in "${files[@]}" ;do 
+	skip=false
+	echo "file is $file"	
+	for ignore in "${ignored[@]}"; do
+		echo "ignore is $ignore"
+
+		if [[ "$file" == "$ignore" ]] ;then
+		   #    	echo "{$ignore file is $file}"
+			skip=true
+			break 
+			
+		fi	
+       	done	
+if  [[ $skip == true ]] ; then
+        echo "$file is ignored"
+	continue
+fi
+final+=("$file")
+done
+
+echo "${final[@]}"
+
+
+create_links() {
+original="$(realpath $1)"
+dest="${1#.}"
+dest="$HOME$dest"
+echo "original is $original"
+echo "dest is $dest"
+ln -sf  $original $dest
+echo "link created for $1"
+}
+
+for file1 in "${final[@]}" ; do
+	echo "file $file1"
+	echo "creating link"
+	create_links "$file1"
+	echo "link created for $file1"
+ 
+done
+
+
