@@ -90,4 +90,4 @@ set backspace=indent,eol,start
 "I added this for line numbers also relative number i.e. how many lines you
 "need to move up or down
 set number
-set relativenumber
+"set relativenumber
