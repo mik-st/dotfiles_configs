@@ -118,4 +118,11 @@ fi
 
 eval "$(starship init bash)"
 
+#From Kubernetes course
+alias k='kubectl' # You can call `kubectl` by `k` now
 
+source /etc/bash_completion # not needed on macos
+
+source <(kubectl completion bash) # execute the output of kubectl completion bash in the current bash
+
+complete -o default -F __start_kubectl k #This line makes sure that the completion also works for `k`
