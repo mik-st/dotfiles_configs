@@ -130,3 +130,9 @@ source <(kubectl completion bash) # execute the output of kubectl completion bas
 
 
 complete -o default -F __start_kubectl k #This line makes sure that the completion also works for `k`
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
+
+ echo >> /home/$USER/.bashrc
+    echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"' >> /home/$USER/.bashrc
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
